@@ -1,7 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`My App component renders without crashing 1`] = `
-<span>
-  oi
-</span>
+<form
+  onSubmit={[Function]}
+>
+  <input
+    name="todo"
+    onChange={[Function]}
+    required={true}
+    type="text"
+  />
+</form>
 `;
