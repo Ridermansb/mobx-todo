@@ -2,7 +2,7 @@
 
 ## TODO
 
- - [ ] List todos from store
  - [ ] Allow add todo
+ - [ ] List todos from store
  - [ ] Check/uncheck todo
  - [ ] Archive completed todos.
