@@ -18,7 +18,6 @@ export default class extends PureComponent {
 
   @autobind
   onChange(e) {
-    console.log('called', e);
     this.setState({ todo: e.target.value });
   }
 
