@@ -5,6 +5,9 @@ exports[`My TodoAdd component renders without crashing 1`] = `
   onSubmit={[Function]}
 >
   <input
+    name="todo"
+    onChange={[Function]}
+    required={true}
     type="text"
   />
 </form>
