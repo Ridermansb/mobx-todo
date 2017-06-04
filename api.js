@@ -13,15 +13,13 @@ const statusCheck = response => {
 }
 
 export default (todo) => {
-  const form = new FormData();
-  form.append('title', todo);
-
-  return fetch(`${API_PREFIX}/todo`, {
+  return fetch(`${API_PREFIX}/todos`, {
     method: "POST",
-    body: form,
     headers: {
-      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
     },
+    body: JSON.stringify({title: todo})
   })
     .then(statusCheck)
     .then(resp => resp.json())

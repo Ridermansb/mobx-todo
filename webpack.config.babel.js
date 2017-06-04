@@ -21,7 +21,7 @@ module.exports = (env = { dev: true }) => {
         template: resolve('index.tpl.html'),
       }),
       new webpack.DefinePlugin({
-        API_PREFIX: JSON.stringify('http://localhost/api'),
+        API_PREFIX: JSON.stringify('/api'),
       })
     ],
     module: {
@@ -32,6 +32,13 @@ module.exports = (env = { dev: true }) => {
           loaders: 'babel-loader',
         }
       ]
-    }
+    },
+    devServer: {
+      contentBase: resolve(__dirname, 'dist'),
+      historyApiFallback: true,
+      proxy: {
+        '/api/**': `http://localhost:3000`,
+      },
+    },
   }
 }

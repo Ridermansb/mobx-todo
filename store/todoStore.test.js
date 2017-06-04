@@ -18,15 +18,15 @@ describe('todoStore instance', () => {
   })
 
   test('after call add should call api', () => {
-    fetchMock.post(`${API_PREFIX}/todo`, {});
+    fetchMock.post(`${API_PREFIX}/todos`, {});
     return store.add('To do').then(() => {
-      expect(fetchMock.called(`${API_PREFIX}/todo`)).toBeTruthy();
+      expect(fetchMock.called(`${API_PREFIX}/todos`)).toBeTruthy();
     })
   })
 
   test('when resolve promise add should update todos', (done) => {
     const newTodo = { title: 'To do' };
-    fetchMock.post(`${API_PREFIX}/todo`, newTodo);
+    fetchMock.post(`${API_PREFIX}/todos`, newTodo);
     store
       .add(newTodo.title)
       .then(() => {
