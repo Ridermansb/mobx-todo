@@ -1,14 +1,19 @@
 import React, { PureComponent } from 'react'
+import { inject, observer } from 'mobx-react';
+import PropTypes from 'prop-types';
 import { autobind } from 'core-decorators';
 
-export default class extends PureComponent {
+@inject("todoStore") @observer
+class TodoAdd extends PureComponent {
 
   state = {
 
   }
 
   @autobind
-  onSubmitHandle () {
+  onSubmitHandle (e) {
+    e.preventDefault();
+    
     const { todoStore } = this.props;
     if (this.state.todo) {
       todoStore.add(this.state.todo);
@@ -28,3 +33,11 @@ export default class extends PureComponent {
     </form>
   }
 }
+
+TodoAdd.wrappedComponent.propTypes = {
+  todoStore: PropTypes.shape({
+    add: PropTypes.func.isRequired,
+  }).isRequired
+}
+
+export default TodoAdd
