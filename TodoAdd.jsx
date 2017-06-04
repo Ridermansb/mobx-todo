@@ -17,7 +17,7 @@ class TodoAdd extends PureComponent {
     const { todoStore } = this.props;
     if (this.state.todo) {
       todoStore.add(this.state.todo);
-      this.todoInput.value = undefined;
+      this.todoInput.value = '';
     }
   }
 

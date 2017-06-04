@@ -2,6 +2,7 @@ import React from 'react';
 import TodoAdd from './TodoAdd';
 import { TodoStore } from './store/todoStore';
 import renderer from 'react-test-renderer';
+import expectPropTypesError from './testHelpers';
 
 describe('My TodoAdd component', () => {
 
@@ -32,10 +33,13 @@ describe('My TodoAdd component', () => {
   })
 
   test('should throw error if no todoStore is provide', () => {
-    expect(() => {
-      // renderer.create(<TodoAdd.wrappedComponent />)
-      shallow(<TodoAdd.wrappedComponent />)
-    }).toThrow();
+    const spy = jest.spyOn(console, 'error');
+    renderer.create(<TodoAdd.wrappedComponent />)
+
+    expectPropTypesError(spy, 'todoStore', 'TodoAdd')
+
+    spy.mockReset();
+    spy.mockRestore();
   })
 
   test('after submit with todo should call add on store', () => {

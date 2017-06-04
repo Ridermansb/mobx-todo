@@ -1,4 +1,5 @@
 const { resolve } = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = (env = { dev: true }) => {
@@ -19,6 +20,9 @@ module.exports = (env = { dev: true }) => {
       new HtmlWebpackPlugin({
         template: resolve('index.tpl.html'),
       }),
+      new webpack.DefinePlugin({
+        API_PREFIX: JSON.stringify('http://localhost/api'),
+      })
     ],
     module: {
       rules: [
